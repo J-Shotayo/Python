@@ -4,28 +4,28 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.datasets import load_iris
 
-# Load the Iris dataset
+# Loads the Iris dataset
 try:
     iris = load_iris()
     iris_df = pd.DataFrame(data=np.c_[iris['data'], iris['target']], 
                           columns=iris['feature_names'] + ['target'])
     
-    # Display the first few rows
+    # Displays the first few rows
     print("First 5 rows of the dataset:")
     print(iris_df.head())
     
-    # Explore the structure
+    # Explores the structure
     print("\nDataset information:")
     print(iris_df.info())
     
-    # Check for missing values
+    # Checks for missing values
     print("\nMissing values per column:")
     print(iris_df.isnull().sum())
     
-    # Clean the dataset (though Iris typically has no missing values)
-    iris_df_clean = iris_df.dropna()  # This won't do anything for Iris dataset
+    # Cleans the dataset
+    iris_df_clean = iris_df.dropna()  
     
-    # Map target to species names for better readability
+    # Maps target to species names for better readability
     iris_df_clean['species'] = iris_df_clean['target'].map({0: 'setosa', 1: 'versicolor', 2: 'virginica'})
     
 except Exception as e:
